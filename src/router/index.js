@@ -35,12 +35,12 @@ const router = new VueRouter({
   routes,
 })
 
+// 在进行编程式路由导航的时候，反复点击,控制台就会提示报错，为了深入了解编程式路由跳转，以及
+// 防止控制台的多次报错需要对VueRouter的原型上的push以及replace进行重新编写！
 // 先把VueRouter原型对象的方法，保存一份
 let originPush = VueRouter.prototype.push
 let originReplace = VueRouter.prototype.replace
 
-// 在进行编程式路由导航的时候，反复点击,控制台就会提示报错，为了深入了解编程式路由跳转，以及
-// 防止控制台的多次报错需要对VueRouter的原型上的push以及replace进行重新编写！
 // 重写push|replace
 // 第一个参数：需要跳转的地址（传递哪些参数）
 // 第二个参数：成功的回调

@@ -5,7 +5,7 @@
     <Recommend />
     <Rank />
     <Like />
-    <Floor />
+    <Floor v-for="floor in catfloorList" :key="floor.id" :list="floor" />
     <Brand />
   </div>
 </template>
@@ -18,6 +18,7 @@ import Rank from './Rank'
 import Like from './Like'
 import Floor from './Floor'
 import Brand from './Brand'
+import { mapState } from 'vuex'
 export default {
   name: 'Home',
   components: {
@@ -28,6 +29,11 @@ export default {
     Floor,
     Brand,
     TypeNav,
+  },
+  computed: {
+    ...mapState({
+      catfloorList: (state) => state.home.catfloorList,
+    }),
   },
 }
 </script>

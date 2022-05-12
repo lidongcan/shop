@@ -15,6 +15,11 @@ export default {
     Header,
     Footer,
   },
+  mounted() {
+    this.$store.dispatch('getegoryList')
+    this.$store.dispatch('getBannerList')
+    this.$store.dispatch('getFloorList')
+  },
 }
 </script>
 

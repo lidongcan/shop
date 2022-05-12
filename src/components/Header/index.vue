@@ -51,10 +51,14 @@ export default {
   methods: {
     search() {
       if (this.keyword.replace(/\s/g, '') === '') {
-        this.$message.error('请输入搜索内容')
-        return
+        return this.$message.error('请输入搜索内容')
       }
-      this.$router.push({ name: 'search', params: { keyword: this.keyword } })
+      // this.$router.push({ name: 'search', params: { keyword: this.keyword }, query: { keyword: this.keyword } })
+      // 如果有query参数，那么就会跳转到search页面时带query参数
+      if (this.$route.query) {
+        let loction = { name: 'search', params: { keyword: this.keyword || undefined } }
+        ;(loction.query = this.$route.query), this.$router.push(loction)
+      }
     },
   },
 }
