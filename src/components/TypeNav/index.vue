@@ -66,7 +66,9 @@ export default {
     goSearch() {
       let element = event.target
       //给a标签添加自定义属性data-categoryName,全部的字标签当中只有a标签带有自定义属性，别的标签名字----dataset纯属扯淡
-      let { categoryname, category1id, category2id, category3id } = element.dataset
+      // let { categoryname, category1id, category2id, category3id } = element.dataset
+      let node = event.target
+      let { categoryname, category1id, category2id, category3id } = node.dataset
       if (categoryname) {
         let loction = { name: 'search' }
         let query = { categoryName: categoryname }
@@ -79,10 +81,10 @@ export default {
           query.category3Id = category3id
         }
         // 整理参数
-        location.query = query
+        loction.query = query
+        // console.log(query)
         this.$router.push(loction)
-        console.log(query)
-        console.log(location)
+        // console.log(loction.query)
       }
     },
     navshow() {

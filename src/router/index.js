@@ -27,7 +27,7 @@ const routes = [
     path: '/search/:keyword?',
     meta: { show: true },
     name: 'search',
-    component: () => import('@/views/Search/search'),
+    component: () => import('@/views/Search'),
   },
 ]
 

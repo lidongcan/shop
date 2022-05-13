@@ -50,9 +50,9 @@ export default {
   },
   methods: {
     search() {
-      if (this.keyword.replace(/\s/g, '') === '') {
-        return this.$message.error('请输入搜索内容')
-      }
+      // if (this.keyword.replace(/\s/g, '') === '') {
+      //   return this.$message.error('请输入搜索内容')
+      // }
       // this.$router.push({ name: 'search', params: { keyword: this.keyword }, query: { keyword: this.keyword } })
       // 如果有query参数，那么就会跳转到search页面时带query参数
       if (this.$route.query) {
@@ -60,6 +60,11 @@ export default {
         ;(loction.query = this.$route.query), this.$router.push(loction)
       }
     },
+  },
+  mounted() {
+    this.$bus.$on('clear', () => {
+      this.keyword = ''
+    })
   },
 }
 </script>

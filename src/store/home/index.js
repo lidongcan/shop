@@ -1,5 +1,5 @@
 // home组件的小仓库
-import { reqCategoryList } from '@/api'
+import { reqGetegoryList } from '@/api'
 import axios from 'axios'
 
 const state = {
@@ -16,7 +16,7 @@ const mutations = {
   // 存储轮播图数据
   CATEBANNERLIST(state, catbannerList) {
     state.catbannerList = catbannerList
-    console.log('交给了state')
+    // console.log('交给了state')
   },
   // 存储商品楼层数据
   CATEFLOORLIST(state, catfloorList) {
@@ -26,7 +26,7 @@ const mutations = {
 const actions = {
   // 获取三级分类列表数据
   async getegoryList({ commit }) {
-    let res = await reqCategoryList()
+    let res = await reqGetegoryList()
     if (res.code === 200) {
       commit('CATEGORYLIST', res.data)
       //   console.log(res.data)
